@@ -1,0 +1,6 @@
+{
+  "name": "MediLedger - National Decentralized Healthcare EHR",
+  "description": "National decentralized healthcare data network for hospitals with instant MyKad emergency lookup, tamper-proof audit trails, and clinical decision support for duplicate test prevention.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
