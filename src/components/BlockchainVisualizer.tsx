@@ -8,6 +8,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { HospitalNode, BlockchainBlock, AccessActionType } from '../types/mediledger';
+import networkHubImg from '../assets/images/mediledger_network_hub_1794481247421.jpg';
 
 interface BlockchainVisualizerProps {
   hospitals: HospitalNode[];
@@ -243,7 +244,7 @@ export const BlockchainVisualizer: React.FC<BlockchainVisualizerProps> = ({
           {/* Network Diagram Banner */}
           <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-900 relative shadow-xs">
             <img
-              src="/src/assets/images/mediledger_network_hub_1794481247421.jpg"
+              src={networkHubImg}
               alt="MediLedger cross-hospital data network diagram"
               referrerPolicy="no-referrer"
               className="w-full h-56 md:h-64 object-cover opacity-80"

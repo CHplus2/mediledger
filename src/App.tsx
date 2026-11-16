@@ -6,7 +6,6 @@ import { BlockchainVisualizer } from './components/BlockchainVisualizer';
 import { MyKadScannerModal } from './components/MyKadScannerModal';
 import { DuplicateTestModal } from './components/DuplicateTestModal';
 import { AddRecordModal } from './components/AddRecordModal';
-import { ExhibitionPoster } from './components/ExhibitionPoster';
 import {
   INITIAL_PATIENTS,
   CONNECTED_HOSPITALS,
@@ -29,12 +28,6 @@ import {
 import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
-  const [showPoster, setShowPoster] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search).get('view') === 'poster';
-    }
-    return false;
-  });
   const [activeTab, setActiveTab] = useState<'doctor' | 'citizen' | 'network'>('doctor');
   const [patients, setPatients] = useState<PatientRecord[]>(INITIAL_PATIENTS);
   const [currentPatient, setCurrentPatient] = useState<PatientRecord>(INITIAL_PATIENTS[0]);
@@ -284,10 +277,6 @@ export default function App() {
     showToast(`Cross-hospital state synchronization verified in Block #${newBlock.blockNumber}.`);
   };
 
-  if (showPoster) {
-    return <ExhibitionPoster onBack={() => setShowPoster(false)} />;
-  }
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
       
@@ -386,14 +375,6 @@ export default function App() {
             <span>Layer 2 Encrypted FHIR/IPFS</span>
             <span aria-hidden="true">·</span>
             <span>PDPA 2010 Compliant</span>
-            <span aria-hidden="true">·</span>
-            <button
-              type="button"
-              onClick={() => setShowPoster(true)}
-              className="text-teal-700 hover:text-teal-800 font-medium underline underline-offset-2 cursor-pointer"
-            >
-              Booth Poster (FYP)
-            </button>
           </div>
         </div>
       </footer>

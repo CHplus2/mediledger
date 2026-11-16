@@ -31,11 +31,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         {/* Zone 2: Clean Text Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium h-full" aria-label="Primary navigation">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium h-full" aria-label="Primary navigation">
           <button
             type="button"
             onClick={() => setActiveTab('doctor')}
-            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 ${
+            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'doctor'
                 ? 'border-teal-700 text-slate-950 font-semibold'
                 : 'border-transparent text-slate-600 hover:text-slate-950'
@@ -47,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('citizen')}
-            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 ${
+            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'citizen'
                 ? 'border-teal-700 text-slate-950 font-semibold'
                 : 'border-transparent text-slate-600 hover:text-slate-950'
@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('network')}
-            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 ${
+            className={`h-full flex items-center border-b-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'network'
                 ? 'border-teal-700 text-slate-950 font-semibold'
                 : 'border-transparent text-slate-600 hover:text-slate-950'
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenScanner}
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors shadow-xs whitespace-nowrap shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors shadow-xs whitespace-nowrap shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 cursor-pointer"
           >
             <CreditCard className="w-3.5 h-3.5" />
             <span>Scan MyKad</span>
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Navigation Strip */}
-      <nav className="md:hidden flex items-center justify-around px-4 py-2 bg-slate-50 border-t border-slate-200 text-xs font-medium" aria-label="Mobile navigation">
+      <nav className="md:hidden flex items-center justify-around px-3 py-2 bg-slate-50 border-t border-slate-200 text-xs font-medium overflow-x-auto gap-1" aria-label="Mobile navigation">
         <button
           type="button"
           onClick={() => setActiveTab('doctor')}
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             activeTab === 'network' ? 'bg-white text-teal-800 font-semibold shadow-xs border border-slate-200' : 'text-slate-600'
           }`}
         >
-          Network & Ledger
+          Network
         </button>
       </nav>
     </header>

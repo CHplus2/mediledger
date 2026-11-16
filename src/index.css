@@ -30,16 +30,3 @@
     font-family: var(--font-mono);
   }
 }
-
-@media print {
-  @page {
-    size: A1 portrait;
-    margin: 6mm;
-  }
-
-  body {
-    background-color: #ffffff !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-}
