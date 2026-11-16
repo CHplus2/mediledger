@@ -89,11 +89,11 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 self-end sm:self-auto">
-          <label htmlFor="citizen-patient-select" className="text-xs font-medium text-slate-500 whitespace-nowrap">
+        <div className="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
+          <label htmlFor="citizen-patient-select" className="text-xs font-medium text-slate-500 whitespace-nowrap shrink-0">
             Citizen Profile:
           </label>
-          <div className="relative">
+          <div className="relative min-w-0 flex-1 sm:flex-initial">
             <select
               id="citizen-patient-select"
               value={patient.mykad}
@@ -101,7 +101,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
                 const matched = availablePatients.find((p) => p.mykad === e.target.value);
                 if (matched) onSwitchPatient(matched);
               }}
-              className="appearance-none bg-white border border-slate-300 text-xs font-medium text-slate-900 rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-teal-600/20 focus:border-teal-700 cursor-pointer"
+              className="w-full sm:w-auto max-w-full appearance-none bg-white border border-slate-300 text-xs font-medium text-slate-900 rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-teal-600/20 focus:border-teal-700 cursor-pointer truncate"
             >
               {availablePatients.map((p) => (
                 <option key={p.mykad} value={p.mykad}>
@@ -115,11 +115,11 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
       </div>
 
       {/* Segmented Navigation */}
-      <div className="flex items-center gap-1 p-1 bg-slate-100 border border-slate-200 rounded-lg text-xs font-medium max-w-xl">
+      <div className="flex flex-wrap sm:flex-nowrap items-center gap-1 p-1 bg-slate-100 border border-slate-200 rounded-lg text-[11px] sm:text-xs font-medium w-full max-w-xl">
         <button
           type="button"
           onClick={() => setActiveTab('card')}
-          className={`flex-1 py-2 px-3 rounded-md transition-all text-center whitespace-nowrap ${
+          className={`flex-1 min-w-fit py-2 px-2 sm:px-3 rounded-md transition-all text-center whitespace-nowrap ${
             activeTab === 'card' ? 'bg-white text-slate-950 font-semibold shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -129,7 +129,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab('audit')}
-          className={`flex-1 py-2 px-3 rounded-md transition-all text-center whitespace-nowrap ${
+          className={`flex-1 min-w-fit py-2 px-2 sm:px-3 rounded-md transition-all text-center whitespace-nowrap ${
             activeTab === 'audit' ? 'bg-white text-slate-950 font-semibold shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -139,7 +139,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab('vault')}
-          className={`flex-1 py-2 px-3 rounded-md transition-all text-center whitespace-nowrap ${
+          className={`flex-1 min-w-fit py-2 px-2 sm:px-3 rounded-md transition-all text-center whitespace-nowrap ${
             activeTab === 'vault' ? 'bg-white text-slate-950 font-semibold shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -324,10 +324,10 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
       {/* Tab 3: Portable Health Vault */}
       {activeTab === 'vault' && (
         <section className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/50">
-            <div>
+          <div className="px-4 sm:px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/50">
+            <div className="min-w-0">
               <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-                <FileCheck2 className="w-4 h-4 text-teal-700" />
+                <FileCheck2 className="w-4 h-4 text-teal-700 shrink-0" />
                 <span>Portable Health Summary (HL7 FHIR Export)</span>
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
@@ -338,7 +338,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
             <button
               type="button"
               onClick={handleDownloadVault}
-              className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors whitespace-nowrap shadow-xs"
+              className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors whitespace-nowrap shadow-xs shrink-0"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export FHIR Bundle (.json)</span>
@@ -346,15 +346,15 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
           </div>
 
           {downloadSuccess && (
-            <div className="mx-6 mt-5 p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2">
+            <div className="mx-4 sm:mx-6 mt-5 p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Portable FHIR Health Summary downloaded (<span className="font-mono">mediledger-fhir-{patient.mykad}.json</span>).</span>
+              <span>Portable FHIR Health Summary downloaded (<span className="font-mono break-all">mediledger-fhir-{patient.mykad}.json</span>).</span>
             </div>
           )}
 
           {/* Clean 3-Column Metrics Strip */}
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 border-b border-slate-200">
-            <div className="p-6 space-y-1">
+            <div className="p-4 sm:p-6 space-y-1">
               <span className="text-xs font-medium text-slate-500 block">Verified Allergies</span>
               <span className="text-2xl font-bold text-slate-900 font-mono tabular-nums block">
                 {patient.allergies.length}
@@ -362,7 +362,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
               <span className="text-xs text-slate-500 block">Cross-hospital signed</span>
             </div>
 
-            <div className="p-6 space-y-1">
+            <div className="p-4 sm:p-6 space-y-1">
               <span className="text-xs font-medium text-slate-500 block">Active Medications</span>
               <span className="text-2xl font-bold text-slate-900 font-mono tabular-nums block">
                 {patient.medications.length}
@@ -370,7 +370,7 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
               <span className="text-xs text-slate-500 block">Synchronized across pharmacies</span>
             </div>
 
-            <div className="p-6 space-y-1">
+            <div className="p-4 sm:p-6 space-y-1">
               <span className="text-xs font-medium text-slate-500 block">Surgeries & Diagnostics</span>
               <span className="text-2xl font-bold text-slate-900 font-mono tabular-nums block">
                 {patient.surgeries.length + patient.diagnosticHistory.length}
@@ -380,26 +380,26 @@ export const CitizenPassport: React.FC<CitizenPassportProps> = ({
           </div>
 
           {/* Bundle Preview Table */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
               Included Clinical Sections
             </h3>
             <div className="divide-y divide-slate-100 border border-slate-200 rounded-lg text-xs">
-              <div className="px-4 py-3 flex items-center justify-between">
+              <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="font-medium text-slate-900">Allergies & Contraindications</span>
-                <span className="text-slate-500 tabular-nums">{patient.allergies.length} entries</span>
+                <span className="text-slate-500 tabular-nums shrink-0">{patient.allergies.length} entries</span>
               </div>
-              <div className="px-4 py-3 flex items-center justify-between">
+              <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="font-medium text-slate-900">Surgical Procedures & Implants</span>
-                <span className="text-slate-500 tabular-nums">{patient.surgeries.length} entries</span>
+                <span className="text-slate-500 tabular-nums shrink-0">{patient.surgeries.length} entries</span>
               </div>
-              <div className="px-4 py-3 flex items-center justify-between">
+              <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="font-medium text-slate-900">Pharmacotherapy & Prescriptions</span>
-                <span className="text-slate-500 tabular-nums">{patient.medications.length} entries</span>
+                <span className="text-slate-500 tabular-nums shrink-0">{patient.medications.length} entries</span>
               </div>
-              <div className="px-4 py-3 flex items-center justify-between">
+              <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="font-medium text-slate-900">Radiology Imaging & Laboratory Reports</span>
-                <span className="text-slate-500 tabular-nums">{patient.diagnosticHistory.length} entries</span>
+                <span className="text-slate-500 tabular-nums shrink-0">{patient.diagnosticHistory.length} entries</span>
               </div>
             </div>
           </div>
