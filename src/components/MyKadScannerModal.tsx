@@ -91,38 +91,39 @@ export const MyKadScannerModal: React.FC<MyKadScannerModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs"
       role="dialog"
       aria-modal="true"
       aria-labelledby="scanner-modal-title"
     >
-      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
-        
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50/70">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-teal-700 text-white flex items-center justify-center shrink-0">
-              <CreditCard className="w-4 h-4" />
+      <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
+        <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[90dvh] flex flex-col overflow-hidden shadow-2xl">
+          
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-slate-200 bg-slate-50/70 shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-teal-700 text-white flex items-center justify-center shrink-0">
+                <CreditCard className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <h2 id="scanner-modal-title" className="text-sm font-bold text-slate-950">
+                  MyKad Smart Chip Scanner
+                </h2>
+                <p className="text-xs text-slate-500 truncate">Emergency Department & Clinical Intake Reader</p>
+              </div>
             </div>
-            <div>
-              <h2 id="scanner-modal-title" className="text-sm font-bold text-slate-950">
-                MyKad Smart Chip Scanner
-              </h2>
-              <p className="text-xs text-slate-500">Emergency Department & Clinical Intake Reader</p>
-            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors shrink-0"
+              aria-label="Close scanner modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors"
-            aria-label="Close scanner modal"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
 
-        {/* Body */}
-        <div className="p-6 space-y-6">
+          {/* Body */}
+          <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 overflow-y-auto overscroll-contain flex-1">
 
           {/* Access Mode Selector */}
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -226,7 +227,7 @@ export const MyKadScannerModal: React.FC<MyKadScannerModalProps> = ({
                   <label htmlFor="manual-ic-input" className="text-xs font-semibold text-slate-800 block">
                     Or Enter MyKad Number Manually
                   </label>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     <input
                       id="manual-ic-input"
                       type="text"
@@ -236,11 +237,11 @@ export const MyKadScannerModal: React.FC<MyKadScannerModalProps> = ({
                         setValidationError(null);
                       }}
                       placeholder="e.g. 940512-13-5521 or 010824-12-4982"
-                      className="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600/20 focus:border-teal-700 font-mono"
+                      className="w-full sm:flex-1 min-w-0 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600/20 focus:border-teal-700 font-mono"
                     />
                     <button
                       type="submit"
-                      className="px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors whitespace-nowrap"
+                      className="px-4 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg transition-colors whitespace-nowrap shrink-0"
                     >
                       Retrieve Record
                     </button>
@@ -265,8 +266,9 @@ export const MyKadScannerModal: React.FC<MyKadScannerModalProps> = ({
             </span>
           </div>
 
-        </div>
+          </div>
 
+        </div>
       </div>
     </div>
   );

@@ -33,40 +33,41 @@ export const DuplicateTestModal: React.FC<DuplicateTestModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs"
       role="dialog"
       aria-modal="true"
       aria-labelledby="duplicate-modal-title"
     >
-      <div className="bg-white border border-amber-300 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
-        
-        {/* Header */}
-        <div className="px-6 py-4 bg-amber-50 border-b border-amber-200 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-700 shrink-0">
-              <AlertOctagon className="w-4 h-4" />
+      <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
+        <div className="bg-white border border-amber-300 rounded-2xl w-full max-w-2xl max-h-[90dvh] flex flex-col overflow-hidden shadow-2xl">
+          
+          {/* Header */}
+          <div className="px-4 sm:px-6 py-4 bg-amber-50 border-b border-amber-200 flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-700 shrink-0">
+                <AlertOctagon className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <h2 id="duplicate-modal-title" className="text-sm font-bold text-slate-950">
+                  Duplicate Diagnostic Procedure Detected
+                </h2>
+                <p className="text-xs text-amber-900">
+                  Matching scan was completed at another connected hospital {hoursElapsed} hours ago
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 id="duplicate-modal-title" className="text-sm font-bold text-slate-950">
-                Duplicate Diagnostic Procedure Detected
-              </h2>
-              <p className="text-xs text-amber-900">
-                Matching scan was completed at another connected hospital {hoursElapsed} hours ago
-              </p>
-            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors shrink-0"
+              aria-label="Close duplicate warning modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors"
-            aria-label="Close duplicate warning modal"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
 
-        {/* Body */}
-        <div className="p-6 space-y-5">
+          {/* Body */}
+          <div className="p-4 sm:p-6 space-y-5 overflow-y-auto overscroll-contain flex-1">
 
           {/* Impact Metrics */}
           <div className="grid grid-cols-2 divide-x divide-slate-200 border border-slate-200 rounded-xl bg-slate-50/70">
@@ -198,8 +199,9 @@ export const DuplicateTestModal: React.FC<DuplicateTestModalProps> = ({
             </div>
           )}
 
-        </div>
+          </div>
 
+        </div>
       </div>
     </div>
   );

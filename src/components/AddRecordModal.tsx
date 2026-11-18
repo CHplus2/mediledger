@@ -67,40 +67,41 @@ export const AddRecordModal: React.FC<AddRecordModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs"
       role="dialog"
       aria-modal="true"
       aria-labelledby="add-record-modal-title"
     >
-      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
-        
-        {/* Header */}
-        <div className="px-6 py-4 bg-slate-50/70 border-b border-slate-200 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-teal-700 text-white flex items-center justify-center shrink-0">
-              <FilePlus2 className="w-4 h-4" />
+      <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
+        <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg max-h-[90dvh] flex flex-col overflow-hidden shadow-2xl">
+          
+          {/* Header */}
+          <div className="px-4 sm:px-6 py-4 bg-slate-50/70 border-b border-slate-200 flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-teal-700 text-white flex items-center justify-center shrink-0">
+                <FilePlus2 className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <h2 id="add-record-modal-title" className="text-sm font-bold text-slate-950">
+                  Add Clinical Record
+                </h2>
+                <p className="text-xs text-slate-500 truncate">
+                  {patient.fullName} · <span className="font-mono">{patient.mykad}</span>
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 id="add-record-modal-title" className="text-sm font-bold text-slate-950">
-                Add Clinical Record
-              </h2>
-              <p className="text-xs text-slate-500">
-                {patient.fullName} · <span className="font-mono">{patient.mykad}</span>
-              </p>
-            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors shrink-0"
+              aria-label="Close add record modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg transition-colors"
-            aria-label="Close add record modal"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
 
-        {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+          {/* Form Body */}
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-5 overflow-y-auto overscroll-contain flex-1">
 
           <div>
             <span className="text-xs font-semibold text-slate-800 block mb-2">Record Category</span>
@@ -297,8 +298,9 @@ export const AddRecordModal: React.FC<AddRecordModalProps> = ({
             </button>
           </div>
 
-        </form>
+          </form>
 
+        </div>
       </div>
     </div>
   );
